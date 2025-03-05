@@ -1,0 +1,1 @@
+web: poetry run python ffwrapped_be.dash_app.run.py

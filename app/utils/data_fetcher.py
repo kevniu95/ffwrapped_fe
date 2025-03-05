@@ -1,5 +1,7 @@
 import requests
 import logging
+from config import config
+
 
 # Set up logging
 logging.basicConfig(
@@ -10,7 +12,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # FastAPI backend URL
-BASE_URL = "http://localhost:8000"
+BASE_URL = config.backend_url
 
 # Cache for API responses to minimize backend calls
 response_cache = {}

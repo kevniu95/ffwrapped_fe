@@ -1,10 +1,10 @@
 import dash_bootstrap_components as dbc
 from dash import html
 
-from app import app
-from layouts.tab1_layout import get_tab1_layout
-from layouts.tab2_layout import get_tab2_layout
-from layouts.tab3_layout import get_tab3_layout
+from app.app import app
+from app.layouts.tab1_layout import get_tab1_layout
+from app.layouts.tab2_layout import get_tab2_layout
+from app.layouts.tab3_layout import get_tab3_layout
 
 # App layout
 app.layout = dbc.Container(
@@ -33,7 +33,7 @@ app.layout = dbc.Container(
     className="p-4",
 )
 
-from callbacks import tab1_callbacks
+from app.callbacks import tab1_callbacks
 
 if __name__ == "__main__":
     app.run_server(debug=True)

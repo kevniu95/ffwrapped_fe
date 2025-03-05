@@ -1,6 +1,6 @@
 import dash_bootstrap_components as dbc
 from dash import html
-from utils.data_fetcher import fetch_lineup_data
+from app.utils.data_fetcher import fetch_lineup_data
 
 
 def create_season_summary_cards(team_id, stat_type="weekly"):

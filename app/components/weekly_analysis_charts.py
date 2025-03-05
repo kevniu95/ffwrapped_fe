@@ -3,7 +3,7 @@ from dash import html
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import logging
-from utils.data_fetcher import fetch_lineup_data
+from app.utils.data_fetcher import fetch_lineup_data
 
 # Set up logging
 logging.basicConfig(

@@ -1,8 +1,8 @@
 import plotly.graph_objs as go
 import numpy as np
 import logging
-from utils.data_fetcher import fetch_lineup_data
-from utils.data_processor import process_weekly_data
+from app.utils.data_fetcher import fetch_lineup_data
+from app.utils.data_processor import process_weekly_data
 
 
 logging.basicConfig(

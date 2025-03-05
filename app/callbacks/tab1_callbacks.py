@@ -1,9 +1,9 @@
 from dash.dependencies import Input, Output
 from dash import callback_context
-from components.season_line_charts import create_season_overview
-from components.season_waterfall import create_season_waterfall
-from components.summary_cards import create_season_summary_cards
-from app import app
+from app.components.season_line_charts import create_season_overview
+from app.components.season_waterfall import create_season_waterfall
+from app.components.summary_cards import create_season_summary_cards
+from app.app import app
 
 
 # Callbacks for Tab 1

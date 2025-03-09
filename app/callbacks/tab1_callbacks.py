@@ -1,4 +1,4 @@
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 from dash import callback_context
 from app.components.season_line_charts import create_season_overview
 from app.components.season_waterfall import create_season_waterfall
@@ -29,3 +29,18 @@ def update_season_overview(
     summary_cards = create_season_summary_cards(team_id)
     season_waterfall = create_season_waterfall(team_id, view_mode)
     return season_chart, summary_cards, season_waterfall
+
+
+# Add modal toggle callback
+@app.callback(
+    Output("summary-explainer-modal", "is_open"),
+    [
+        Input("summary-explainer-button", "n_clicks"),
+        Input("summary-explainer-close", "n_clicks"),
+    ],
+    [State("summary-explainer-modal", "is_open")],
+)
+def toggle_summary_explainer(n1, n2, is_open):
+    if n1 or n2:
+        return not is_open
+    return is_open

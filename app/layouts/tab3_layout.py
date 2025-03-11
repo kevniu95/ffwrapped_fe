@@ -8,6 +8,10 @@ def get_tab3_layout():
     """
     return dbc.Container(
         [
+            html.H2("Coming soon!"),
+            html.P("====================================="),
+            html.P("====================================="),
+            html.P("====================================="),
             html.H3("League-Wide Breakdown", className="mt-4"),
             html.P(
                 "Illustrate multiple teams (1–10) over weeks (1–18), using line charts."

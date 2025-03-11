@@ -91,7 +91,7 @@ def create_season_waterfall(team_id, view_mode="all"):
             width=bar_width,
             text=f"{transaction_impact:+.1f}",
             textposition="outside",
-            hovertemplate="Transaction Impact: %{text} pts<br>Effect of all your add/drops and trades<extra></extra>",
+            hovertemplate=f"Transaction Impact: {transaction_impact:+.1f} pts<br>Effect of all your add/drops and trades<extra></extra>",
             base=[draft_points_avg],  # Base determines if bar goes up or down
         )
     )
@@ -125,7 +125,7 @@ def create_season_waterfall(team_id, view_mode="all"):
             text=f"{actual_best_points_avg:.1f}",
             textposition="outside",
             width=bar_width,
-            hovertemplate="Unrealized Potential: %{y:.1f} pts<br>Points left on the table due to lineup decisions<extra></extra>",
+            hovertemplate=f"Unrealized Potential: {unrealized:.1f} pts<br>Points left on the table due to lineup decisions<extra></extra>",
             # showlegend=False,
         )
     )
@@ -160,7 +160,7 @@ def create_season_waterfall(team_id, view_mode="all"):
 
     # Update layout
     fig.update_layout(
-        title="Season Performance Breakdown",
+        # title="Season Performance Breakdown",
         barmode="overlay",
         bargap=0.15,
         bargroupgap=0.1,
@@ -181,20 +181,8 @@ def create_season_waterfall(team_id, view_mode="all"):
             traceorder="normal",
             font=dict(size=10),
         ),
-        margin=dict(t=0, b=0, l=50, r=50),
-        height=350,
-        # annotations=[
-        #     dict(
-        #         x=0.5,
-        #         y=-0.25,
-        #         xref="paper",
-        #         yref="paper",
-        #         text="<b>How to read this:</b> First bar shows your draft value, second shows the impact of transactions, third shows actual points with unrealized potential",
-        #         showarrow=False,
-        #         font=dict(size=11),
-        #         align="center",
-        #     )
-        # ],
+        margin=dict(t=30, b=0, l=50, r=40),
+        height=380,
     )
 
     return fig

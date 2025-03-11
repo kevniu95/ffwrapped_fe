@@ -58,35 +58,37 @@ def get_tab1_layout():
                         "See how your draft, transactions, and lineup decisions affected your final score",
                         className="text-muted mb-3",
                     ),
-                    html.Div(
-                        [
-                            dbc.Button(
-                                [
-                                    html.I(className="fas fa-info-circle me-1"),
-                                    "How to read this",
-                                ],
-                                id="summary-explainer-button",
-                                color="link",
-                                size="sm",
-                                className="mb-2",
-                            ),
-                        ]
-                    ),
                     # Two-column layout for summary cards and waterfall chart
                     dbc.Row(
                         [
                             # Left column: Summary Cards
                             dbc.Col(
                                 html.Div(  # Outer container for centering
-                                    dcc.Loading(
-                                        id="loading-summary-cards",
-                                        type="circle",
-                                        children=html.Div(
-                                            id="season-summary-cards",
-                                            # No height/centering classes here
+                                    [
+                                        html.Div(
+                                            dbc.Button(
+                                                [
+                                                    html.I(
+                                                        className="fas fa-info-circle me-1"
+                                                    ),
+                                                    "How to read this",
+                                                ],
+                                                id="summary-explainer-button",
+                                                color="link",
+                                                size="sm",
+                                                # className="",  # Add margin-top for spacing
+                                            ),
+                                            className="d-flex justify-content-start w-100",  # Left justify the button
                                         ),
-                                    ),
-                                    className="d-flex align-items-center justify-content-center h-100",  # Apply centering here
+                                        dcc.Loading(
+                                            id="loading-summary-cards",
+                                            type="circle",
+                                            children=html.Div(
+                                                id="season-summary-cards",
+                                            ),
+                                        ),
+                                    ],
+                                    className="d-flex flex-column align-items-center justify-content-center h-100",  # Apply centering here
                                     style={"height": "100%"},
                                 ),
                                 md=6,
@@ -103,8 +105,11 @@ def get_tab1_layout():
                                                 type="circle",
                                                 children=dcc.Graph(
                                                     id="season-waterfall",
-                                                    style={"height": "350px"},
-                                                    config={"responsive": True},
+                                                    style={"height": "410px"},
+                                                    config={
+                                                        "responsive": True,
+                                                        # "displayModeBar": False,
+                                                    },
                                                 ),
                                             ),
                                         ),

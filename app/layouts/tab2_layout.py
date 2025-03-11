@@ -8,6 +8,10 @@ def get_tab2_layout():
     """
     return dbc.Container(
         [
+            html.H2("Coming soon!"),
+            html.P("====================================="),
+            html.P("====================================="),
+            html.P("====================================="),
             html.H3("Weekly Analysis", className="mt-4"),
             # Show the same summary cards but for a specific week
             html.Div(id="weekly-summary-cards", className="mt-4"),

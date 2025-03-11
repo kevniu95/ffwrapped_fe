@@ -100,10 +100,49 @@ def get_tab1_layout():
                         id="loading-summary-cards",
                         type="circle",
                         children=html.Div(id="season-summary-cards"),
+                        className="mx-auto",
+                        style={"maxWidth": "51.67%"},
+                    ),
+                    dbc.Card(
+                        [
+                            dbc.CardHeader("Season Performance Breakdown"),
+                            dbc.CardBody(
+                                [
+                                    dbc.Row(
+                                        [
+                                            dbc.Col(
+                                                [
+                                                    dcc.Loading(
+                                                        id="loading-waterfall",
+                                                        type="circle",
+                                                        children=dcc.Graph(
+                                                            id="season-waterfall",
+                                                            style={
+                                                                "height": "450px",
+                                                            },
+                                                            config={
+                                                                "responsive": True  # Helps with resizing
+                                                            },
+                                                        ),
+                                                    ),
+                                                ],
+                                                width={"size": 12},
+                                            ),
+                                        ]
+                                    ),
+                                ]
+                            ),
+                        ],
+                        className="mb-4 shadow-sm",
+                        style={
+                            "maxWidth": "50%",  # Using fixed width instead of percentage
+                            "minHeight": "500px",  # Added minimum height
+                        },
                     ),
                 ],
                 className="mb-4",
             ),
+            # Waterfall Analysis
             # Season Overview Chart
             dbc.Card(
                 [
@@ -127,37 +166,6 @@ def get_tab1_layout():
                                         }
                                     },
                                 ),
-                            ),
-                        ]
-                    ),
-                ],
-                className="mb-4 shadow-sm",
-            ),
-            # Waterfall Analysis
-            dbc.Card(
-                [
-                    dbc.CardHeader("Season Performance Breakdown"),
-                    dbc.CardBody(
-                        [
-                            dbc.Row(
-                                [
-                                    dbc.Col(
-                                        [
-                                            html.P(
-                                                "This chart shows how draft value, transactions, and lineup decisions contributed to your final score.",
-                                                className="text-muted mb-3",
-                                            ),
-                                            dcc.Loading(
-                                                id="loading-waterfall",
-                                                type="circle",
-                                                children=dcc.Graph(
-                                                    id="season-waterfall"
-                                                ),
-                                            ),
-                                        ],
-                                        width={"size": 10, "offset": 1},
-                                    ),
-                                ]
                             ),
                         ]
                     ),

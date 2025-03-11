@@ -117,7 +117,7 @@ def create_season_waterfall(team_id, view_mode="all"):
             x=[x_positions[2]],
             y=[unrealized],
             base=[actual_lineup_points_avg],  # Start from top of actual points
-            name="Unrealized Potential",
+            name="Possible points",
             marker=dict(
                 color=colors["missed"],
                 pattern=dict(shape="/"),  # Diagonal line pattern
@@ -126,7 +126,7 @@ def create_season_waterfall(team_id, view_mode="all"):
             textposition="outside",
             width=bar_width,
             hovertemplate="Unrealized Potential: %{y:.1f} pts<br>Points left on the table due to lineup decisions<extra></extra>",
-            showlegend=False,
+            # showlegend=False,
         )
     )
 

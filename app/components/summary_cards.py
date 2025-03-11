@@ -96,7 +96,7 @@ def create_season_summary_cards(team_id):
                                     html.Div(
                                         [
                                             html.H5(
-                                                "Roster Management",
+                                                "Transaction Impact",
                                                 className="text-success mb-1",
                                             ),
                                             html.H2(

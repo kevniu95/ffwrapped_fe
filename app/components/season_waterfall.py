@@ -61,7 +61,7 @@ def create_season_waterfall(team_id, view_mode="all"):
     fig = go.Figure()
 
     # Set x-positions and width
-    x_positions = ["Draft Value", "Transactions", "Actual"]
+    x_positions = ["Draft Baseline", "Transactions", "Actual"]
     bar_width = 0.6
 
     # First bar: Draft Value
@@ -69,7 +69,7 @@ def create_season_waterfall(team_id, view_mode="all"):
         go.Bar(
             x=[x_positions[0]],
             y=[draft_points_avg],
-            name="Draft Value",
+            name="Draft Baseline",
             marker_color=colors["draft"],
             width=bar_width,
             text=f"{draft_points_avg:.1f}",
@@ -126,6 +126,7 @@ def create_season_waterfall(team_id, view_mode="all"):
             textposition="outside",
             width=bar_width,
             hovertemplate="Unrealized Potential: %{y:.1f} pts<br>Points left on the table due to lineup decisions<extra></extra>",
+            showlegend=False,
         )
     )
 
@@ -180,8 +181,8 @@ def create_season_waterfall(team_id, view_mode="all"):
             traceorder="normal",
             font=dict(size=10),
         ),
-        margin=dict(t=30, b=100, l=50, r=50),
-        height=450,
+        margin=dict(t=0, b=0, l=50, r=50),
+        height=350,
         # annotations=[
         #     dict(
         #         x=0.5,

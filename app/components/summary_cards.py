@@ -47,7 +47,7 @@ def create_season_summary_cards(team_id):
         (actual_points / best_possible * 100) if best_possible > 0 else 0
     )
 
-    transaction_sign = "+" if transaction_impact > 0 else ""
+    transaction_sign = "+" if transaction_impact > 0 else "-"
 
     # Determine direction badges
     transaction_badge = {
@@ -209,5 +209,5 @@ def create_season_summary_cards(team_id):
                 ]
             )
         ],
-        className="mb-4 shadow",
+        className="mb-0 shadow-sm h-100",  # h-100 makes it fill the height of its container
     )

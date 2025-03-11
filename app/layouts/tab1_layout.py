@@ -80,7 +80,6 @@ def get_tab1_layout():
                         "See how your draft, transactions, and lineup decisions affected your final score",
                         className="text-muted mb-3",
                     ),
-                    # Info button with modal for explanation
                     html.Div(
                         [
                             dbc.Button(
@@ -95,82 +94,74 @@ def get_tab1_layout():
                             ),
                         ]
                     ),
-                    # Cards will be loaded in this div
-                    dcc.Loading(
-                        id="loading-summary-cards",
-                        type="circle",
-                        children=html.Div(id="season-summary-cards"),
-                        className="mx-auto",
-                        style={"maxWidth": "51.67%"},
+                    # Two-column layout for summary cards and waterfall chart
+                    dbc.Row(
+                        [
+                            # Right column: Waterfall Chart
+                            dbc.Col(
+                                dbc.Card(
+                                    [
+                                        dbc.CardHeader("Season Performance Breakdown"),
+                                        dbc.CardBody(
+                                            dcc.Loading(
+                                                id="loading-waterfall",
+                                                type="circle",
+                                                children=dcc.Graph(
+                                                    id="season-waterfall",
+                                                    style={"height": "350px"},
+                                                    config={"responsive": True},
+                                                ),
+                                            ),
+                                        ),
+                                    ],
+                                    className="h-100 shadow-sm",  # Make card fill height
+                                ),
+                                md=6,
+                                className="mb-3",
+                            ),
+                            # Left column: Summary Cards
+                            dbc.Col(
+                                html.Div(  # Outer container for centering
+                                    dcc.Loading(
+                                        id="loading-summary-cards",
+                                        type="circle",
+                                        children=html.Div(
+                                            id="season-summary-cards",
+                                            # No height/centering classes here
+                                        ),
+                                    ),
+                                    className="d-flex align-items-center justify-content-center h-100",  # Apply centering here
+                                    style={"height": "100%"},
+                                ),
+                                md=6,
+                                className="mb-3",
+                            ),
+                        ],
+                        className="mb-4 align-items-stretch",
+                        style={
+                            "minHeight": "450px"
+                        },  # Set a minimum height for the row
                     ),
+                    # Weekly Performance Trend (full width)
                     dbc.Card(
                         [
-                            dbc.CardHeader("Season Performance Breakdown"),
+                            dbc.CardHeader("Weekly Performance Trend"),
                             dbc.CardBody(
-                                [
-                                    dbc.Row(
-                                        [
-                                            dbc.Col(
-                                                [
-                                                    dcc.Loading(
-                                                        id="loading-waterfall",
-                                                        type="circle",
-                                                        children=dcc.Graph(
-                                                            id="season-waterfall",
-                                                            style={
-                                                                "height": "450px",
-                                                            },
-                                                            config={
-                                                                "responsive": True  # Helps with resizing
-                                                            },
-                                                        ),
-                                                    ),
-                                                ],
-                                                width={"size": 12},
-                                            ),
-                                        ]
+                                dcc.Loading(
+                                    id="loading-chart",
+                                    type="circle",
+                                    children=dcc.Graph(
+                                        id="season-overview-chart",
+                                        style={"height": "300px"},
+                                        config={"displayModeBar": False},
                                     ),
-                                ]
+                                )
                             ),
                         ],
                         className="mb-4 shadow-sm",
-                        style={
-                            "maxWidth": "50%",  # Using fixed width instead of percentage
-                            "minHeight": "500px",  # Added minimum height
-                        },
                     ),
                 ],
                 className="mb-4",
-            ),
-            # Waterfall Analysis
-            # Season Overview Chart
-            dbc.Card(
-                [
-                    dbc.CardHeader("Weekly Performance Trend"),
-                    dbc.CardBody(
-                        [
-                            dcc.Loading(
-                                id="loading-chart",
-                                type="circle",
-                                children=dcc.Graph(
-                                    id="season-overview-chart",
-                                    config={"displayModeBar": False},
-                                    figure={
-                                        "layout": {
-                                            "legend": {
-                                                "orientation": "h",
-                                                "y": -0.2,
-                                                "x": 0.5,
-                                                "xanchor": "center",
-                                            }
-                                        }
-                                    },
-                                ),
-                            ),
-                        ]
-                    ),
-                ],
-                className="mb-4 shadow-sm",
             ),
             # Add this at the bottom before the final return statement's closing parenthesis
             # Educational Modal for explaining concepts
